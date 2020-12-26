@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 echo "Deploying, because we are on ${env.BRANCH_NAME}"
-                 sh "docker run --rm \
+                sh "docker run --rm \
                     --mount type=bind,source=\"$(pwd)\",target=/opt/tyk-sync/tmp \
                     tykio/tyk-sync:v1.2.0 \
                     sync \
