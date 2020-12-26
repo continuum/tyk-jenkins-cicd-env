@@ -24,7 +24,13 @@ pipeline {
             }
             steps {
                 echo "Deploying, because we are on ${env.BRANCH_NAME}"
-                 sh "./tyk-sync sync -d http://localhost:4000 -s ${env.TYK_DASH_SECRET} -p ."
+                 sh "docker run --rm \
+                    --mount type=bind,source=\"$(pwd)\",target=/opt/tyk-sync/tmp \
+                    tykio/tyk-sync:v1.2.0 \
+                    sync \
+                    -d=\"http://localhost:4000\" \
+                    -s=\"${env.TYK_DASH_SECRET}\" \
+                    -b=\"refs/heads/main\" https://github.com/continuum/tyk-jenkins-cicd-env"
             }
         }
     }
