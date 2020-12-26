@@ -28,13 +28,14 @@ pipeline {
         }
         stage('deploy') {
             when {
-                expression { env.BRANCH_NAME == 'master' }
+                expression { env.BRANCH_NAME == 'main' }
             }
             steps {
                 echo "Deploying, because we are on ${env.BRANCH_NAME}"
-                sh "wget https://github.com/asoorm/tyk-git/releases/download/0.1-alpha/tyk-git"
-                sh "chmod +x tyk-git"
-                sh "./tyk-git sync -d ${env.TYK_DASH_URL} -o ${env.TYK_ORG_ID} -s ${env.TYK_DASH_SECRET} ${env.WORKSPACE}/.git -b refs/heads/${env.BRANCH_NAME}"
+                sh "docker run --rm --mount type=bind,source="$(pwd)",target=/opt/tyk-sync/tmp tykio/tyk-sync:v1.2.0 sync \
+                 -d="${env.TYK_DASH_URL}" \
+                 -s="${env.TYK_DASH_SECRET}" \
+                 -b="refs/heads/${env.BRANCH_NAME}" https://github.com/continuum/tyk-jenkins-cicd-env"
             }
         }
     }

@@ -1,0 +1,42 @@
+{
+  "_id": "5fc558e6546adf0373f35435",
+  "id": "5fc558e6546adf0373f35435",
+  "name": "internal-policy",
+  "org_id": "5fc50138546adf7fb907a00f",
+  "rate": 1000,
+  "per": 60,
+  "quota_max": -1,
+  "quota_renewal_rate": -1,
+  "throttle_interval": -1,
+  "throttle_retry_limit": -1,
+  "max_query_depth": -1,
+  "access_rights": {
+    "51ee0fe8d8424e245b559ea029e236f0": {
+      "api_name": "amidoc-services",
+      "api_id": "51ee0fe8d8424e245b559ea029e236f0",
+      "versions": [
+        "Default"
+      ],
+      "allowed_urls": [],
+      "restricted_types": [],
+      "limit": null,
+      "field_access_rights": null,
+      "allowance_scope": ""
+    }
+  },
+  "hmac_enabled": false,
+  "active": true,
+  "is_inactive": false,
+  "date_created": "2020-11-30T20:41:10.118Z",
+  "tags": [],
+  "key_expires_in": 0,
+  "partitions": {
+    "quota": true,
+    "rate_limit": true,
+    "complexity": true,
+    "acl": true,
+    "per_api": false
+  },
+  "last_updated": "1606768870",
+  "meta_data": {}
+}
