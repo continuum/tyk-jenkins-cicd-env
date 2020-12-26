@@ -32,7 +32,7 @@ pipeline {
             }
             steps {
                 echo "Deploying, because we are on ${env.BRANCH_NAME}"
-                 sh "./tyk-sync sync -d http://localhost:4000 -s ${env.TYK_DASH_SECRET} -p ."
+                 sh "./tyk-sync sync -d http://localhost:4000 -s ${env.tyk-dash-secret} -p ."
             }
         }
     }
