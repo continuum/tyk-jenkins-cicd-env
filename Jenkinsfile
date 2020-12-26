@@ -2,8 +2,6 @@ pipeline {
     agent any
 
     environment {
-        TYK_DASH_URL = credentials('tyk-dash-url')
-        TYK_ORG_ID = credentials('tyk-org-id')
         TYK_DASH_SECRET = credentials('tyk-dash-secret')
     }
 
@@ -32,7 +30,7 @@ pipeline {
             }
             steps {
                 echo "Deploying, because we are on ${env.BRANCH_NAME}"
-                 sh "./tyk-sync sync -d http://localhost:4000 -s ${env.tyk-dash-secret} -p ."
+                 sh "./tyk-sync sync -d http://localhost:4000 -s ${env.TYK_DASH_SECRET} -p ."
             }
         }
     }
