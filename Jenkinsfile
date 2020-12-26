@@ -13,10 +13,7 @@ pipeline {
 
                     apiDefs.each { apiDef ->
                         def pJson = readJSON file: env.WORKSPACE + "/" + apiDef.name
-                        println "Testing ${pJson.name}: ${pJson.api_id}"
-
-                        println "ensuring api has appropriate tags"
-                        assertWhitelistedTag(pJson)
+                        println "Testing ${pJson}"
                     }
                 }
             }
