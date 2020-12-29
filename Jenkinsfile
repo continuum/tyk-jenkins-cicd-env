@@ -14,7 +14,7 @@ pipeline {
                 script {
                     if (fileExists('.tyk.json')) {
                         echo "Deploying from ${env.BRANCH_NAME}"
-                        sh "./tyk-sync sync -d http://localhost:4000 -s ${env.tyk2_dashboard_credentials} -p ."
+                        sh "docker run --rm --mount type=bind,source=\"${pwd()}\",target=/opt/tyk-sync/tmp tykio/tyk-sync:v1.2.0 sync -d=\"http://localhost:4000\" -s=\"${env.tyk2_dashboard_credentials}\" -b=\"refs/heads/main\" https://github.com/continuum/tyk-jenkins-cicd-env"
                     } else {
                         echo 'No files to deploy'
                     }
