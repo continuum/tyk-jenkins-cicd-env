@@ -7,9 +7,6 @@ pipeline {
 
     stages {
         stage('deploy') {
-            when {
-                expression { env.BRANCH_NAME == 'main' }
-            }
             steps {
                 script {
                     if (fileExists('.tyk.json')) {
