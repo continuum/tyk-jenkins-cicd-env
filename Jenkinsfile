@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        tyk2_dashboard_credentials = credentials('tyk2-dashboard-credentials')
+        tyk2_dashboard_credentials = credentials('tyk-dashboard-admin-secret')
     }
 
     stages {
