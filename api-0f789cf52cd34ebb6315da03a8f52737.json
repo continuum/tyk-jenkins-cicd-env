@@ -224,6 +224,18 @@
           "extended_paths": {
             "white_list": [
               {
+                "path": "/mockups/cities",
+                "ignore_case": false,
+                "method_actions": {
+                  "GET": {
+                    "action": "reply",
+                    "code": 200,
+                    "data": "{\n\"city\": \"santiago\"\n}",
+                    "headers": {}
+                  }
+                }
+              },
+              {
                 "path": "/mockups/users",
                 "ignore_case": false,
                 "method_actions": {
